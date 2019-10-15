@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import { simpleAction } from './actions/simpleAction';
 import { connect } from 'react-redux';
 import SortingAlgorithmsMainView from "./ui/sortingAlgorithms/SortingAlgorithmsMainView";
 
 class App extends Component {
-
-  simpleAction = (event) => {
-    this.props.simpleAction();
-  };
-
 
   render() {
     return (
@@ -33,7 +27,6 @@ const mapStateToProps = state => ({
 });
 
  const mapDispatchToProps = dispatch => ({
-  simpleAction: () => dispatch(simpleAction()),
  });
 
 export default connect(mapStateToProps, mapDispatchToProps) (App);
