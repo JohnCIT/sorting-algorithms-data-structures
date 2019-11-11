@@ -2,12 +2,8 @@ import Button from '@material-ui/core/Button';
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
-import {setNumberArrayToUseAction} from "../../actions/SortingAlgorActions";
-
-
 
 const DataToUse = (props) => {
-
     return (
         <>
             <Button>

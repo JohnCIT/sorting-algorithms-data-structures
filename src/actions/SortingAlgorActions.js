@@ -4,15 +4,17 @@ export const SORTING_ALGOR_ACTIONS = {
     SET_NUMBERS: "SET_NUMBERS"
 };
 
-export const setNumberArrayToUseAction = (numbersToUse: Array) => (dispatch) => {
-    dispatch( {
+export const setNumberArrayToUseAction = (numbersToUse: Array) =>  {
+    return {
         type: SORTING_ALGOR_ACTIONS.SET_NUMBERS, numbersToUse: numbersToUse
-    });
+    };
 };
 
 
 
-export const bubbleSortAction = () => (dispatch, getState) => {
-    let sortedNums = bubbleSort(getState().sortingAlgorReducer.numbersToUse);
-    console.log(sortedNums);
+export const bubbleSortAction = () => {
+    return (dispatch, getState) => {
+        let sortedNums = bubbleSort(getState().sortingAlgorReducer.numbersToUse);
+        dispatch(setNumberArrayToUseAction(sortedNums));
+    };
 };

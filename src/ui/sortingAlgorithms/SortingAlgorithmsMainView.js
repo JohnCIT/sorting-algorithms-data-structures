@@ -22,7 +22,11 @@ const SortingAlgorithmsMainView = (props) => {
         chosenSortingAlgorithm: props.chosenSortingAlgorithm
     });
 
-    let numbersToUse = [10, 25, 26, 32];
+    let numbersToUse = props.numbersToUse;
+    if(numbersToUse.length === 0)
+    {
+        numbersToUse = [32, 10, 25, 26, 32];
+    }
 
     return (
             <>
@@ -45,7 +49,7 @@ const SortingAlgorithmsMainView = (props) => {
                             </MenuItem>
                         ))}
                     </Select>
-                    <DataToUse numbersToUse={numbersToUse}/>
+                    <DataToUse key={numbersToUse} numbersToUse={numbersToUse}/>
                     <CodeDisplay/>
                 </div>
 
