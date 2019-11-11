@@ -3,7 +3,7 @@
 */
 import { combineReducers } from 'redux';
 import cardMenuReducer from './cardMenuReducer';
-import sortingAlgorReducer from "./sortingAlgorReducer";
+import sortingAlgorReducer from "./SortingAlgorReducer";
 
 
 

@@ -1,20 +1,13 @@
 import Button from '@material-ui/core/Button';
 import React from 'react';
 import { bindActionCreators } from 'redux';
-import {goToGameAction} from '../../actions/cardMenuActions';
 import {connect} from 'react-redux';
 import Select from '@material-ui/core/Select';
 import MenuItem from "@material-ui/core/MenuItem";
+import DataToUse from "./DataToUse";
+import CodeDisplay from "./CodeDisplay";
+import {bubbleSortAction, setNumberArrayToUseAction} from "../../actions/SortingAlgorActions";
 
-
-const styles = {
-    card: {
-        maxWidth: 345,
-    },
-    media: {
-        height: 140,
-    },
-};
 
 const mainStyle = {
     "left": "10px",
@@ -25,10 +18,11 @@ const mainStyle = {
 
 const SortingAlgorithmsMainView = (props) => {
 
-    const { classes } = props;
     const [chosenSortingAlgorithm, setSortingAlgorithm] = React.useState({
         chosenSortingAlgorithm: props.chosenSortingAlgorithm
     });
+
+    let numbersToUse = [10, 25, 26, 32];
 
     return (
             <>
@@ -51,12 +45,15 @@ const SortingAlgorithmsMainView = (props) => {
                             </MenuItem>
                         ))}
                     </Select>
+                    <DataToUse numbersToUse={numbersToUse}/>
+                    <CodeDisplay/>
                 </div>
 
                 <Button
-                onClick={() => {
-                    console.log("!!!!!!!!!!!!!!!!");
-                }}>
+                    onClick={() => {
+                        props.setNumberArrayToUse(numbersToUse);
+                        props.bubbleSortAction();
+                    }}>
                     click here to run code
                 </Button>
             </>
@@ -66,17 +63,19 @@ const SortingAlgorithmsMainView = (props) => {
 
 
 const mapStateToProps = state => ({
-    goToGame: state.cardMenuReducer.goToGame,
     chosenSortingAlgorithm: state.sortingAlgorReducer.chosenAlgorithm,
-    sortingAlgorArray: state.sortingAlgorReducer.sortingAlgorithmsArray
-})
+    sortingAlgorArray: state.sortingAlgorReducer.sortingAlgorithmsArray,
+    numbersToUse: state.sortingAlgorReducer.numbersToUse
+});
 
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators(
         {
-            goToGameAction: goToGameAction()
+            setNumberArrayToUse: setNumberArrayToUseAction,
+            bubbleSortAction: bubbleSortAction,
+            setNumberArrayToUseAction: setNumberArrayToUseAction
         }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps) (SortingAlgorithmsMainView);
+export default connect(mapStateToProps, mapDispatchToProps)(SortingAlgorithmsMainView);
 

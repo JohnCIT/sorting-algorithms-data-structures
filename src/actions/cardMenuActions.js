@@ -9,7 +9,7 @@ export const GO_TO_ALGORITHMS = 'GO_TO_ALGORITHMS';
 export const goToPlayGroundAction = () => dispatch => {
     return {
         type: GO_TO_PLAYGROUND
-    }
+    };
 }
 
 

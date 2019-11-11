@@ -14,13 +14,12 @@ export default (state = {
                 showAlgorithms: true
             };
 
-
         case GO_TO_GAME:
-        console.log("!!!!! in red");
-        return {
-                ...state,
-                goToGame: true       
-        }
+            console.log("!!!!! in red");
+            return {
+                    ...state,
+                    goToGame: true
+            };
             default:
             return state;
         }
